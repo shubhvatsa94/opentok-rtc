@@ -55,6 +55,22 @@
             mobileSettings();
         }
       });
+      toolbar = new OTSolution.Annotations.Toolbar({
+        session: session,
+        container: document.getElementById('toolbar-annotation'),
+        colors: palette,
+        items: [ // Menu item configuration
+        {
+            id: 'OT_pen',
+            title: 'Pen',
+        }]
+      })
+      
+      toolbar.itemClicked(function (id) {
+          // Handle the event
+          console.log("Toolbar clicked", id)
+      });
+
     </script>
 
     <script defer src="/js/vendor/es6-promise.min.js"></script>
@@ -64,6 +80,7 @@
     <script defer src="/js/components/modal.js"></script>
     <script defer src="/js/vendor/lazy_loader.js"></script>
     <script defer src="/js/rtcApp.js"></script>
+    <script src="/js/vendor/opentok-annotation.js"></script>
   </head>
 
   <body class="forbidden">
@@ -125,6 +142,10 @@
             <i data-icon="end_call"></i>
           </button>
           <p>Leave Call</p>
+        </div>
+        <div id="toolbar-annotation">
+            <i data-icon="annotate"></i>
+          <p>Annotate</p>
         </div>
         <div>
           <button id="toggle-publisher-video" class="selected" disabled>
